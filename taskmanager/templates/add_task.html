@@ -18,8 +18,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix teal-text text-darken-4"></i>
-                <textarea id="task_description" name="task_description" minlength="50" maxlength="200"
-                type="text" class="materialize textarea validate" required></textarea>
+                <textarea id="task_description" name="task_description" minlength="5" maxlength="200" type="text"
+                    class="materialize-textarea validate" required></textarea>
                 <label for="task_description">Task Description</label>
             </div>
         </div>
@@ -37,7 +37,11 @@
             <div class="input-field col s12">
                 <i class="fas fa-exclamation-circle prefix teal-text text-darken-4"></i>
                 <input id="is_urgent" name="is_urgent" type="checkbox">
-                <label for="is_urgent">Urgent?</label>
+                <label for="is_urgent">
+                    <input id="is_urgent" name="is_urgent" type="checkbox">
+                    <span class="lever"></span>
+                    Urgent?
+                </label>
             </div>
         </div>
         <!-- category_id -->
@@ -50,7 +54,6 @@
                     <option value="{{ category.id }}">{{ category.category_name }}</option>
                     {% endfor %}
                 </select>
-                <label for="task_name">Task Name</label>
             </div>
         </div>
         <!-- submit button -->

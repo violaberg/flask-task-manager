@@ -5,7 +5,8 @@ from taskmanager.models import Category, Task
 
 @app.route("/")
 def home():
-    return render_template("tasks.html")
+    tasks = list(Task.query.order_by(Task.id).all())
+    return render_template("tasks.html", tasks=tasks)
 
 
 @app.route("/categories")
@@ -36,8 +37,8 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<int:category_id>")
 def delete_category(category_id):
-    category.category_name = request.form.get("category_name")
-    db.session.delete()
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
     db.session.commit()
     return redirect(url_for("categories"))
 
